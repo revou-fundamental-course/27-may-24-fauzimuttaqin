@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Madrid Website</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo-left">
+            <img src="logo.png" alt="Logo Left">
+        </div>
+        <h1>Real Madrid</h1>
+        <div class="logo-right">
+            <img src="logo.png" alt="Logo Right">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#players">Players</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="banner">
+    <div class="container">
+        <h2>Welcome to Real Madrid Website</h2>
+        <p>Explore the legendary football club of Real Madrid</p>
+    </div>
+</section>
+<hr>
+<section id="about" class="about">
+    <div class="container">
+        <h2>About Real Madrid</h2>
+        <p>Real Madrid Club de Fútbol, also known as Los Blancos, is a Spanish professional football club based in Madrid. 
+            The club is one of three founding members of La Liga that have never been relegated from the top division since its inception in 1929, 
+            along with Athletic Bilbao and Barcelona2. Real Madrid is one of the world’s best-known teams, with fans in many countries1
+            . The club holds many long-standing rivalries, most notably El Clásico with Barcelona and El Derbi Madrileño with Atlético Madrid.</p>
+    </div>
+</section>
+<hr>
+<section id="players" class="players">
+    <div class="container">
+        <h2>Real Madrid Players</h2>
+        <p>Here are some of the top players of Real Madrid:</p>
+        <ul>
+            <li>Jude Bellingham</li>
+            <li>Vinicius Junior</li>
+            <li>Luka Modric</li>
+            <li>Rodrygo</li>
+            <li>Brahim Diaz</li>
+        </ul>
+    </div>
+</section>
+<hr>
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or inquiries, feel free to contact us:</p>
+        <form id="myForm" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <br>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</section>
+<!-- Back to Top Button -->
+<button onclick="backToTop()" id="back-to-top" title="Go to top">^^ Back To Top ^^</button>
+<hr>
+<h1>THANKS</h1>
+<script>
+// Function to show/hide the back to top button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  var button = document.getElementById("back-to-top");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    button.style.display = "block";
+  } else {
+    button.style.display = "none";
+  }
+}
+function backToTop() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+// Function to validate form
+function validateForm() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var message = document.getElementById("message").value;
+  var isValid = true;
+
+  // Check if name is empty
+  if (name == "") {
+    isValid = false;
+    document.getElementById("name").classList.add("error");
+  } else {
+    document.getElementById("name").classList.remove("error");
+  }
+  // Check if email is empty and valid
+  if (email == "") {
+    isValid = false;
+    document.getElementById("email").classList.add("error");
+  } else {
+    document.getElementById("email").classList.remove("error");
+    // Regular expression to validate email format
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      isValid = false;
+      document.getElementById("email").classList.add("error");
+    } else {
+      document.getElementById("email").classList.remove("error");
+    }
+  }
+  // Check if message is empty
+  if (message == "") {
+    isValid = false;
+    document.getElementById("message").classList.add("error");
+  } else {
+    document.getElementById("message").classList.remove("error");
+  }
+
+  // Return true if all fields are valid, otherwise false
+  return isValid;
+}
+</script>
+
+</body>
+</html>
